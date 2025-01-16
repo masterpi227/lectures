@@ -15,19 +15,22 @@ resource "google_sql_database_instance" "sandbox_postgres" {
     disk_type                   = "PD_SSD"          # Enterprise-level SSD
 
     ip_configuration {
-      ipv4_enabled = true
-      authorized_networks = [{
-        name  = "allow-local-access"
-        value = "0.0.0.0/0" # Open access for sandbox; secure in production
-      }]
+        ipv4_enabled = true
+
+        authorized_networks {
+            name  = "allow-local-access"
+            value = "0.0.0.0/0"
+        }
+    }
+    
+    maintenance_window {
+        day         = 1  # Maintenance on Monday
+        hour        = 3  # Maintenance window start time (UTC)
+        update_track = "stable"
     }
   }
 
-  maintenance_window {
-    day         = 1  # Maintenance on Monday
-    hour        = 3  # Maintenance window start time (UTC)
-    update_track = "stable"
-  }
+  
 
   deletion_protection = false # Allow deletion for sandbox environments
 }
