@@ -49,7 +49,7 @@ resource "google_sql_user" "sandbox_user" {
 resource "google_storage_bucket_iam_member" "grant_sql_access" {
   bucket = "iu-db-data-airlines"  # Replace with your bucket name
   role   = "roles/storage.objectViewer"
-  member = "serviceAccount:${google_sql_database_instance.sandbox_postgres.service_account_email}"
+  member = "serviceAccount:service-{PROJECT_NUMBER}@cloudsql.gserviceaccount.com"
 }
 
 resource "null_resource" "import_sql" {
