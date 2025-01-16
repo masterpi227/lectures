@@ -14,7 +14,7 @@ resource "google_compute_instance" "instance-airflow" {
     auto_delete = "true"
 
     initialize_params {
-      image = "debian-cloud/debian-10"
+      image = "debian-cloud/debian-12"
       size  = "20"
     }
   }
@@ -54,7 +54,7 @@ resource "google_compute_instance" "instance-metabase" {
     auto_delete = "true"
 
     initialize_params {
-      image = "debian-cloud/debian-10"
+      image = "debian-cloud/debian-12"
       size  = "20"
     }
   }
@@ -94,7 +94,7 @@ resource "google_compute_instance" "instance-cubejs" {
     auto_delete = "true"
 
     initialize_params {
-      image = "debian-cloud/debian-10"
+      image = "debian-cloud/debian-12"
       size  = "20"
     }
   }
