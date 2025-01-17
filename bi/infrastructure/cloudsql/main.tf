@@ -8,10 +8,10 @@ resource "google_sql_database_instance" "sandbox_postgres" {
   region           = var.region
 
   settings {
-    tier                        = "db-custom-2-7680" # Customize machine type (2 vCPUs, 7.5 GB RAM)
+    tier                        = "db-perf-optimized-N-2" # Customize machine type (2 vCPUs, 7.5 GB RAM)
     availability_type           = "REGIONAL"        # High availability setup
     disk_autoresize             = true
-    disk_size                   = 100               # Initial disk size in GB
+    disk_size                   = 10               # Initial disk size in GB
     disk_type                   = "PD_SSD"          # Enterprise-level SSD
 
     ip_configuration {
@@ -49,7 +49,7 @@ resource "google_sql_user" "sandbox_user" {
 resource "google_storage_bucket_iam_member" "grant_sql_access" {
   bucket = "iu-db-data-airlines"  # Replace with your bucket name
   role   = "roles/storage.objectViewer"
-  member = "serviceAccount:service-{PROJECT_NUMBER}@cloudsql.gserviceaccount.com"
+  member = "serviceAccount:22156155973-compute@developer.gserviceaccount.com"
 }
 
 resource "null_resource" "import_sql" {
@@ -67,4 +67,3 @@ resource "null_resource" "import_sql" {
     google_storage_bucket_iam_member.grant_sql_access
   ]
 }
-

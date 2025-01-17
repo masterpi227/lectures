@@ -4,7 +4,7 @@ provider "google" {
 
 
 resource "google_compute_instance" "instance-airflow" {
-  name                      = "instance-influxdb"
+  name                      = "instance-airflow"
   zone                      = "us-central1-a"
   tags                      = ["airflow"]
   machine_type              = "n2-standard-4"
@@ -34,6 +34,7 @@ resource "google_compute_instance" "instance-airflow" {
     cd lectures/bi
     bash docker.sh
     bash airflow.sh
+    bash theia.sh
     SCRIPT
 
   service_account {
@@ -131,7 +132,7 @@ resource "google_compute_firewall" "default-allow-airflow" {
 
   allow {
     protocol  = "tcp"
-    ports     = ["8080"]
+    ports     = ["8080", "3000"]
   }
 
   source_ranges = ["0.0.0.0/0"]
