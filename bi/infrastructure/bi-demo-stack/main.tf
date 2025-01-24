@@ -115,6 +115,7 @@ resource "google_compute_instance" "instance-cubejs" {
     cd lectures/bi
     bash docker.sh
     bash cubejs.sh
+    bash theia.sh
     SCRIPT
 
   service_account {
@@ -162,7 +163,7 @@ resource "google_compute_firewall" "default-allow-cubejs" {
 
   allow {
     protocol  = "tcp"
-    ports     = ["4000", "15432"]
+    ports     = ["4000", "15432", "3000"]
   }
 
   source_ranges = ["0.0.0.0/0"]
