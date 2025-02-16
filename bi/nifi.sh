@@ -3,7 +3,7 @@ mkdir addons
 apt install -y unzip
 cd addons
 wget https://jdbc.postgresql.org/download/postgresql-42.7.4.jar
-wget https://github.com/ClickHouse/clickhouse-java/releases/download/v0.8.0/clickhouse-jdbc-0.8.0-all.jar
+wget https://github.com/ClickHouse/clickhouse-java/releases/download/v0.6.5/clickhouse-jdbc-0.6.5-shaded.jar
 wget https://repo1.maven.org/maven2/org/duckdb/duckdb_jdbc/1.1.3/duckdb_jdbc-1.1.3.jar
 cd /lectures/bi
 EXTERNAL_IP=$(curl -H "Metadata-Flavor: Google" http://169.254.169.254/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip)

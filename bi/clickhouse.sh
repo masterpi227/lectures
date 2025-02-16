@@ -1,0 +1,1 @@
+docker run --rm -e CLICKHOUSE_DB=olap -e CLICKHOUSE_USER=clickhouse -e CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1 -e CLICKHOUSE_PASSWORD=clickhouse2025! -p 9000:9000/tcp -p 8123:8123/tcp -p 8443:8443/tcp -d clickhouse/clickhouse-server
